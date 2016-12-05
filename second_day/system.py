@@ -67,6 +67,9 @@ if __name__ == '__main__':
     infos = getInfo()
     p = Popen('cat /etc/issue',shell=True,stdout=PIPE)
     system_ = p.stdout.read().split('\n')[0]
+    hostname = Popen('hostname',shell=True,stdout=PIPE)
+    hostname = hostname.stdout.read().strip()
+    info['hostname'] = hostname
     info['osver'] = system_
     cpu = getCpu()
     info['mem'] = mem()
