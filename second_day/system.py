@@ -6,6 +6,7 @@ import os
 import sys
 def getip():
     out = {}
+    ips = []
     data = Popen(['ifconfig'],stdout=PIPE).stdout.read()
     data1 = data.split('\n\n')
     for i in data1:
@@ -15,7 +16,8 @@ def getip():
         name = chuli[0].split()[0]
         
         ip = chuli[1].split()[2].split(':')[-1]
-        out[name] = ip
+        ips.append(ip)
+    out['ip'] = ips
     return out
 
 def getInfo():
