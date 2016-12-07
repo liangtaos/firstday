@@ -4,10 +4,17 @@ import random
 import sys
 import readline
 def calRandomValue(total, num):
-    total = float(total)
+    try:
+        total = float(total)
+    except:
+        print '别闹,你家的钱是%s啊'%total
+        sys.exit()
     total = float('%.2f'%total)
-    print total
-    num = int(num)
+    try:
+        num = int(num)
+    except:
+        print '你家的人数是%s啊'%num
+        sys.exit()
     min = 0.01 #基数
     if(num < 1): 
         return
