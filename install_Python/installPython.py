@@ -6,6 +6,14 @@ import os
 
 import sys
 
+
+
+def installipython():
+    ip = os.system('pip install ipython')
+	if not ip:
+	    print 'ipython安装成功'
+    else:
+	    print '请手动安装ipython(pip install ipython)'
 def updateyum():
     yu = os.system('\cp -fr ./yum  /usr/bin/')
     if yu == 0:
@@ -20,6 +28,8 @@ def installpip():
         print 'pip 安装成功'
     if os.system('pip install --upgrade pip') == 0:
         print 'pip更新成功'
+		
+	
     os.chdir('..')
 
 def changedir():
@@ -49,13 +59,13 @@ def main():
     #setuptools = os.system('wget https://bootstrap.pypa.io/ez_setup.py -O - | python')
     #if setuptools == 0:
     #    print 'setuptools 安装成功'
-    print os.getcwd()
-    os.system('unzip setuptools-30.2.0.zip')
+   
+    installPython()
+    changedir()
+	os.system('unzip setuptools-30.2.0.zip')
     os.chdir('setuptools-30.2.0')
     os.system('python setup.py install')
     os.chdir('..')
-    installPython()
-    changedir()
     installpip()
     updateyum()
 
